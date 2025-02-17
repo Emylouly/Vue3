@@ -12,10 +12,19 @@
 <body>
     
     <div id="app">
-        <input type="text" v-model="input_name" placeholder="Digite o seu nome">
-        <input type="submit" value="Enviar" v-on:click="submitForm">
+        <form id="app-form">
+            <input type="text" v-model="input_name" placeholder="Digite o seu nome: ">
+            <input type="submit" value="Enviar" v-on:click="submitForm">
+        </form>
+
+        <form id="app-form">
+            <input type="number" v-model="input_age" placeholder="Digite o sua idade: ">
+            <input type="submit" value="Enviar" v-on:click="submitForm">
+        </form>
+
         <p>Seu nome é: {{name}}, e tenho {{age}}.</p>
-        <p>Data Binding: {{input_name}}</p>
+
+        <p>Seu nome é: {{input_name}}, e tenho {{input_age}}.</p>
 
     </div>
 
