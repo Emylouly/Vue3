@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello vue</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="src/app.js" defer></script>
+
+</head>
+<body>
+    
+    <div id="app">
+        <input type="text" v-model="input_name" placeholder="Digite o seu nome">
+        <input type="submit" value="Enviar" v-on:click="submitForm">
+        <p>Seu nome é: {{name}}, e tenho {{age}}.</p>
+        <p>Data Binding: {{input_name}}</p>
+
+    </div>
+
+</body>
+</html>
