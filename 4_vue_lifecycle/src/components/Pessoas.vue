@@ -15,8 +15,9 @@ import Dados from './Dados.vue';
         },
         data(){
             return{
-                nome: 'Loulou'
+                nome: 'Loulou',
+                
             }
-        }
+        },
 }
 </script>
