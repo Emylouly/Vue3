@@ -18,7 +18,7 @@ import LyfeCycle from './components/LyfeCycle.vue';
 import Pessoas from './components/Pessoas.vue';
 import PrimeiroComponente from './components/PrimeiroComponente.vue';
 
-export default{
+export default {
   name:'App',
   components:{
     PrimeiroComponente,
