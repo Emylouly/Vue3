@@ -27,7 +27,7 @@ export default {
   },
   data(){
     return{
-        testando: 'Teste',
+        testando: 'Tste',
     }
   },
 }
