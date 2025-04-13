@@ -4,6 +4,10 @@
   <p v-if="esta_trabalhando">Sono e cansaço</p>
   <p v-else>To com fome</p>
 
+  <div>
+    <button @click="showEmail">{{textoBotao}}</button>
+  </div>
+
   <select v-model="mostrar_email">
     <option :value="true">Mostrar</option>
     <option :value="false">Esconder</option>
@@ -16,7 +20,7 @@
 
   <p>O dado de app é {{ testando }}</p>
 
-  <Picture/>
+  <Picture />
 
   <LyfeCycle />
 
@@ -45,10 +49,23 @@ export default {
         testando: 'Tste',
         esta_trabalhando: true,
         email:'emily@gmail.com',
-        mostrar_email: true,
-        meu_link:'https://google.com'
+        mostrar_email: false,
+        meu_link:'https://google.com',
+        textoBotao:'Mostrar e-mail'
     }
   },
+
+  methods:{
+    showEmail(){
+      console.log("Testando"),
+      this.mostrar_email = !this.mostrar_email
+      if(!this.mostrar_email){
+        this.textoBotao = 'Mostrar e-mail'
+      } else{
+        this.textoBotao = 'Esconder e-mail'
+      }
+    }
+  }
 }
 
 </script>
