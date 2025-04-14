@@ -1,6 +1,8 @@
 <template>
 <div>
 
+  <Header />
+
   <p v-if="esta_trabalhando">Sono e cansaço</p>
   <p v-else>To com fome</p>
 
@@ -14,9 +16,11 @@
   </select>
   <p v-show="mostrar_email">Meu email é: {{ email }}</p>
 
-  <p>Acesse o google: <a v-bind:href="meu_link" target="Google1">Google omg</a></p>
+  <p class="teste">Acesse o google: <a v-bind:href="meu_link" target="Google1">Google omg</a></p>
 
-  <PrimeiroComponente />
+  <p class="pai"> pai pai pai</p>
+
+   <PrimeiroComponente />
 
   <p>O dado de app é {{ testando }}</p>
 
@@ -31,6 +35,7 @@
 
 <script>
 
+import Header from './components/Header.vue';
 import LyfeCycle from './components/LyfeCycle.vue';
 import Pessoas from './components/Pessoas.vue';
 import Picture from './components/Picture.vue';
@@ -39,10 +44,11 @@ import PrimeiroComponente from './components/PrimeiroComponente.vue';
 export default {
   name:'App',
   components:{
+    Header,
     PrimeiroComponente,
     LyfeCycle,
     Pessoas,
-    Picture
+    Picture,
   },
   data(){
     return{
@@ -69,3 +75,23 @@ export default {
 }
 
 </script>
+
+<style>
+
+body{
+    background-color: #333;
+    color: white;
+
+
+}
+
+a{
+  color: blue;
+}
+
+.teste{
+        background-color: black;
+  
+}
+
+</style>

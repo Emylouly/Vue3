@@ -25,3 +25,11 @@ import Form from './Form.vue';
         },
 }
 </script>
+
+<style>
+
+    .pai{
+        color: red;
+    }
+
+</style>
