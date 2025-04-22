@@ -45,6 +45,10 @@ export default {
             console.log("O nome é: " + name);
             console.log("O email é: " + email);
 
+            //Ajax
+
+            //inserir no banco os dados
+
         }
     }
 }
