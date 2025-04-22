@@ -11,7 +11,8 @@
                 <Submit />
             </div>
         </form>
-
+        <p>{{ name }}</p>
+        <p>{{ email }}</p>
     </div>
 </template>
 
@@ -26,7 +27,7 @@ export default {
         InputText,
         Submit
     },
-    Data(){
+    data(){
         return{
             name: "",
             email: ""
