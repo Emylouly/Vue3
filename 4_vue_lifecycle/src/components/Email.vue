@@ -1,6 +1,7 @@
 <template>
     <div>
-        <button v-show="email">{{ email }}</button>
+        <button v-show="email">Mostrar</button>
+        <p>{{ email }}</p>
     </div>
 </template>
 
