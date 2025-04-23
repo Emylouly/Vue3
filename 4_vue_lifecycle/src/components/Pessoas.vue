@@ -3,7 +3,7 @@
         <h2>Está é a descrição da pessoa {{ nome }}</h2>
         <Dados />
 
-        <Email compEmail="cafe@gmail.com"/>
+        <Email :email="email" />
 
     </div>
 </template>
@@ -23,6 +23,7 @@ import Email from './Email.vue';
         data(){
             return{
                 nome: 'Loulou',
+                email: 'Emily@gmail.com'
                 
             }
         },

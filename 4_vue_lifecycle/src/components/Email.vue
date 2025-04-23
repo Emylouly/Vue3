@@ -1,10 +1,6 @@
 <template>
     <div>
-        <select v-model="mostrar">
-            <option :value="true">Mostra</option>
-            <option :value="false">Some</option>
-        </select>
-        <p>{{ email }}</p>
+        <button v-show="email">{{ email }}</button>
     </div>
 </template>
 
