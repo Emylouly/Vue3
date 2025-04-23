@@ -4,12 +4,20 @@
         <button @click="primeiro($event), segundo($event), terceiro(terceiro_evento, $event), quarto($event)">Ativar Multiplos Eventos</button>
         <p>{{ multiplos_eventos }}</p>
 
+        <Reutilizacao />
+
     </div>
 </template>
 
 <script>
+
+import Reutilizacao from './Reutilizacao.vue';
+
 export default {
     name:'MultiplosEventos',
+    components:{
+        Reutilizacao,
+    },
     data(){
         return{
             multiplos_eventos: "",

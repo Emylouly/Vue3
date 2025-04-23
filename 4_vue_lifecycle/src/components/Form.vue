@@ -1,5 +1,8 @@
 <template>
     <div>
+
+        <p>{{ compEmail }}</p>
+
         <form action="" @submit="enviarFormulario($event)">
             <div>
                 <input type="text" v-model="name">
@@ -27,13 +30,16 @@ export default {
         InputText,
         Submit
     },
+    props:{
+        compEmail: String
+    }
+    ,
     data(){
         return{
             name: "",
             email: ""
         }
-    }
-    ,
+    },
     methods: {
         enviarFormulario(e) {
 

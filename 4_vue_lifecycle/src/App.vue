@@ -2,6 +2,8 @@
 <div>
 
   <Header />
+  
+  <PrimeiroComponente />
 
   <p v-if="esta_trabalhando">Sono e cansaço</p>
   <p v-else>To com fome</p>
@@ -20,7 +22,6 @@
 
   <p class="pai"> pai pai pai</p>
 
-   <PrimeiroComponente />
 
   <p>O dado de app é {{ testando }}</p>
 

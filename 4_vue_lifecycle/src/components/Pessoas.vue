@@ -3,7 +3,7 @@
         <h2>Está é a descrição da pessoa {{ nome }}</h2>
         <Dados />
 
-        <Form />
+        <Email compEmail="cafe@gmail.com"/>
 
     </div>
 </template>
@@ -11,11 +11,14 @@
 <script>
 import Dados from './Dados.vue';
 import Form from './Form.vue';
+import Email from './Email.vue';
+
     export default {
         name: 'Pessoas',
         components:{
             Dados,
-            Form
+            Form,
+            Email,
         },
         data(){
             return{
