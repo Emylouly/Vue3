@@ -30,6 +30,15 @@ export default {
             else if(this.mosquichorro == '/img/b.png'){
                 this.mosquichorro = '/img/c.png'
             }
+            else if(this.mosquichorro == '/img/c.png'){
+                this.mosquichorro = '/img/d.png'
+            }
+            else if(this.mosquichorro == '/img/d.png'){
+                this.mosquichorro = '/img/e.png'
+            }
+            else if(this.mosquichorro == '/img/e.png'){
+                this.mosquichorro = '/img/f.png'
+            }
             else {
                 this.mosquichorro = '/img/a.png'
             }
