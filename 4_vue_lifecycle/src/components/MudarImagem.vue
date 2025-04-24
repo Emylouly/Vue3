@@ -7,6 +7,6 @@
 <script>
 export default {
     name: 'MudarImagem',
-     emits:['mudarImagem']
+    emits:['mudarImagem']
 }
 </script>
