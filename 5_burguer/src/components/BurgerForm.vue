@@ -2,10 +2,12 @@
     <div>
         <Message :msg="msg" v-show="msg" />
         <form id="burger-form" @submit="createBurger">
+
             <div class="input-container">
                 <label for="nome">Nome do cliente</label>
                 <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome: ">
             </div>
+
             <div class="input-container">
                 <label for="pao">Escola do pão: </label>
                 <select name="pao" id="pao" v-model="pao">
@@ -76,9 +78,10 @@ import Message from './Message.vue';
 
                 //Data com as escolhas de ingredientes
                 const data ={
+                    nome: this.nome,
                     pao: this.pao,
                     carne: this.carne,
-                    opcional: Array.from(this.opcionais),
+                    opcionais: Array.from(this.opcionais),
                     status: 'Solicitado'
                 }
 
@@ -109,6 +112,7 @@ import Message from './Message.vue';
             }
         },
         mounted(){
+            //Quando a página é carregada ele chama o getingredientes
             this.getingredientes()
         }
     }

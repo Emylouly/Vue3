@@ -12,42 +12,25 @@
 
         <div id="burger-table-rows">
 
-            <div class="burger-table-row">
-                <div class="order-number">1</div>
-                <div>Jõao</div>
-                <div>Pão de trigo</div>
-                <div>Maminha</div>
-                <div>
-                    <ul>
-                        <li>Salame</li>
-                        <li>Tomate</li>
-                    </ul>
-                </div>
-                <div>
-                    <select name="status" id="status">
-                        <option value="">Selecione</option>
-                    </select>
-                    <button class="delete-btn">Cancelar</button>
-                </div>
-            </div>
+            <div class="burger-table-row" v-for="burger in burgers" :key="burger.id">
 
-            <div class="burger-table-row">
-                <div class="order-number">1</div>
-                <div>Jõao</div>
-                <div>Pão de trigo</div>
-                <div>Maminha</div>
+                <div class="order-number">{{ burger_id }}</div>
+                <div>{{ burger.nome }}</div>
+                <div>{{ burger.pao }}</div>
+                <div>{{ burger.carne }}</div>
                 <div>
                     <ul>
-                        <li>Salame</li>
-                        <li>Tomate</li>
+                        <li v-for="(opcional, index) in burger.opcionais" :key="index">{{ opcional }}</li>
                     </ul>
                 </div>
+                
                 <div>
                     <select name="status" id="status">
                         <option value="">Selecione</option>
                     </select>
                     <button class="delete-btn">Cancelar</button>
                 </div>
+
             </div>
 
         </div>
@@ -56,7 +39,33 @@
 
 <script>
 export default {
-    name: 'Dashboard'
+    name: 'Dashboard',
+    data(){
+        return{
+            burgers: null,
+            burger_id: null,
+            status: []
+        }
+    },
+    methods:{
+        async getPedidos(){
+            //Metodo que pede os hamburgues do servidor
+            const req = await fetch("http://localhost:3000/burgers");
+            //Converte os dados de JS para Json
+            const data = await req.json();
+
+            //Declara que o dado burgers é igual à data vinda do servidor
+            this.burgers = data;
+
+            //resetar status
+
+            console.log(this.burgers);
+        }
+    },
+    mounted(){
+        //Quando a página é carregada ele chama o getPedidos
+        this.getPedidos();
+    }
 }
 
 </script>
