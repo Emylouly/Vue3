@@ -76,9 +76,25 @@ import Message from './Message.vue';
             async createBurger(e){
                 e.preventDefault();
 
+                // Primeiro, pega todos os burgers atuais
+                const reqBurgers = await fetch("http://localhost:3000/burgers");
+                const burgers = await reqBurgers.json();
+
+                // Descobrir o maior ID atual
+                let maxId = 0;
+                burgers.forEach((burger) => {
+                    const burgerId = parseInt(burger.id);
+                    if (burgerId > maxId) {
+                        maxId = burgerId;
+                    }
+                });
+
+                // Novo ID é o maior + 1
+                const newId = maxId + 1;
+
                 //Data com as escolhas de ingredientes
                 const data ={
-                    id: Date.now(),
+                    id: newId,
                     nome: this.nome,
                     pao: this.pao,
                     carne: this.carne,
@@ -88,6 +104,7 @@ import Message from './Message.vue';
 
                 //Transforma os dados Data de JS para Json
                 const dataJson = JSON.stringify(data);
+
                 //Post que cria um novo pedido no servidor
                 const req = await fetch("http://localhost:3000/burgers", {
                     method: "POST",
@@ -99,7 +116,7 @@ import Message from './Message.vue';
                 const res = await req.json();
 
                 // colocar msg de sistema
-                this.msg = `Pedido N ${res.id} realizado com sucesso`;
+                this.msg = `Pedido Nº ${res.id} realizado com sucesso`;
 
                 //limpar mensagem
                 setTimeout(() => this.msg = "", 3000);
