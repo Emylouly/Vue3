@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Componete de mensagem</p>
+        <Message :msg="msg" v-show="msg" />
         <form id="burger-form" @submit="createBurger">
             <div class="input-container">
                 <label for="nome">Nome do cliente</label>
@@ -38,8 +38,14 @@
 
 
 <script>
+
+import Message from './Message.vue';
+
     export default {
         name: 'BurgerForm',
+        components: {
+            Message
+        },
         data(){
             return{
                 paes: null,
@@ -48,25 +54,58 @@
                 nome: null,
                 pao: null,
                 carne: null,
-                opcional: [],
+                opcionais: [],
                 status: "Solicitado",
                 msg: null
             }
         },
         methods:{
             async getingredientes(){
+                //Get para buscar os ingredientes do servidor
                 const req = await fetch('http://localhost:3000/ingredientes');
+                //Salva ingredientes escolhidos em data
                 const data = await req.json();
-
 
                 this.paes = data.paes;
                 this.carnes = data.carnes;
                 this.opcionaisdata = data.opcionais;
             },
+            //Impede que a página seja recarregada
             async createBurger(e){
                 e.preventDefault();
 
-                console.log("Criou Hamburguer");
+                //Data com as escolhas de ingredientes
+                const data ={
+                    pao: this.pao,
+                    carne: this.carne,
+                    opcional: Array.from(this.opcionais),
+                    status: 'Solicitado'
+                }
+
+                //Transforma os dados Data de JS para Json
+                const dataJson = JSON.stringify(data);
+                //Post que cria um novo pedido no servidor
+                const req = await fetch("http://localhost:3000/burgers", {
+                    method: "POST",
+                    headers:{"Content-Type": "application/json"},
+                    body: dataJson
+                });
+
+                //Retorna dos dados do pedido criado
+                const res = await req.json();
+
+                // colocar msg de sistema
+                this.msg = `Pedido N ${res.id} realizado com sucesso`;
+
+                //limpar mensagem
+                setTimeout(() => this.msg = "", 3000);
+
+                //limpar os campos
+                this.nome = '',
+                this.pao = '',
+                this.carne = '',
+                this.opcionais = ''
+
             }
         },
         mounted(){
@@ -77,20 +116,20 @@
 
 
 <style scoped>
-    #burguer-form{
+    #burger-form {
         max-width: 400px;
         margin: 0 auto;
     }
 
 
-    .input-container{
+    .input-container {
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
     }
 
 
-    label{
+    label {
         font-weight: bold;
         margin-bottom: 15px;
         color: #222;
@@ -99,24 +138,24 @@
     }
 
 
-    input, select{
+    input, select {
         padding: 5px 10px;
         width: 300px;
     }
 
 
-    #optionais-container{
+    #optionais-container {
         flex-direction: row;
         flex-wrap: wrap;
     }
 
 
-    #opcionais-title{
+    #opcionais-title {
         width: 100%;
     }
 
 
-    .checkbox-container{
+    .checkbox-container {
         display: flex;
         align-items: flex-start;
         width: 50%;
