@@ -78,6 +78,7 @@ import Message from './Message.vue';
 
                 //Data com as escolhas de ingredientes
                 const data ={
+                    id: Date.now(),
                     nome: this.nome,
                     pao: this.pao,
                     carne: this.carne,
@@ -107,7 +108,7 @@ import Message from './Message.vue';
                 this.nome = '',
                 this.pao = '',
                 this.carne = '',
-                this.opcionais = ''
+                this.opcionais = []
 
             }
         },

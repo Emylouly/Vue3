@@ -62,11 +62,11 @@
         "tipo": "Tomate"
       },
       {
-        "id": 4,
+        "id": 5,
         "tipo": "Cebola roxa"
       },
       {
-        "id": 4,
+        "id": 6,
         "tipo": "Pepino"
       }
     ]
@@ -87,47 +87,14 @@
   ],
   "burgers": [
     {
-      "id": "e1d0",
-      "pao": "3 Queijos",
-      "carne": "Maminha",
-      "opcionais": [
-        "Bacon"
-      ],
-      "status": "Solicitado"
-    },
-    {
-      "id": "2715",
+      "id": 1745861550984,
       "nome": "sxdfsdf",
-      "pao": "Integral",
-      "carne": "Maminha",
-      "opcionais": [
-        "Bacon"
-      ],
-      "status": "Solicitado"
-    },
-    {
-      "id": "07fe",
-      "nome": "aaa",
       "pao": "3 Queijos",
       "carne": "Maminha",
       "opcionais": [
         "Bacon",
         "Cheddar",
         "Salame"
-      ],
-      "status": "Solicitado"
-    },
-    {
-      "id": "c0d5",
-      "nome": "aaaaaaa",
-      "pao": "Italiano Branco",
-      "carne": "Alcatra",
-      "opcionais": [
-        "Bacon",
-        "Cheddar",
-        "Salame",
-        "Pepino",
-        "Cebola roxa"
       ],
       "status": "Solicitado"
     }
