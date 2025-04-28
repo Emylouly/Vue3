@@ -20,6 +20,10 @@
       {
         "id": 5,
         "tipo": "Pão Mexicano"
+      },
+      {
+        "id": 6,
+        "tipo": "Pão doce"
       }
     ],
     "carnes": [
@@ -68,6 +72,10 @@
       {
         "id": 6,
         "tipo": "Pepino"
+      },
+      {
+        "id": 7,
+        "tipo": "Purê"
       }
     ]
   },
