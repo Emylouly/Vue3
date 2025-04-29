@@ -1,4 +1,6 @@
 <template>
+    <div>
+    <Message :msg="msg" v-show="msg" />
     <div id="burger-table">
         <div>
             <div id="burger-table-heading">
@@ -28,9 +30,9 @@
                 </div>
                 
                 <div>
-                    <select name="status" id="status">
+                    <select name="status" id="status" @change="updatedBurger($event, burger.id)">
                         <option value="">Selecione</option>
-                        <option v-for="s in status" :key="s.id" value="s.tipo" :selected="burger.status ==s.tipo">
+                        <option v-for="s in status" :key="s.id" :value="s.tipo" :selected="burger.status ==s.tipo">
                             {{ s.tipo }}
                         </option>
                     </select>
@@ -41,16 +43,24 @@
 
         </div>
     </div>
+</div>
 </template>
 
 <script>
+
+import Message from './Message.vue';
+
 export default {
     name: 'Dashboard',
+    components:{
+        Message
+    },
     data(){
         return{
             burgers: null,
             burger_id: null,
-            status: []
+            status: [],
+            msg: null
         }
     },
     methods:{
@@ -80,7 +90,39 @@ export default {
             console.log(this.status);
         },
         async deleteBurger(id){
-            console.log(id);
+
+            const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+            method: "DELETE"
+            });
+
+            const res = await req.json();
+
+            // colocar msg de sistema
+            this.msg = `Pedido removido com sucesso!`;
+
+            //limpar mensagem
+            setTimeout(() => this.msg = "", 3000);
+
+            this.getPedidos();
+        },
+        async updatedBurger(event, id){
+            const option = event.target.value;
+            const dataJson = JSON.stringify({ status: option });
+
+            const req = await fetch(`http://localhost:3000/burgers/${id}`,{
+                method: "PATCH",
+                headers:{ "Content-Type": "application/json" },
+                body: dataJson,
+            });
+
+            const res = await req.json();
+
+            // colocar msg de sistema
+            this.msg = `O pedido Nº ${res.id} foi atualizado para ${res.status}.`;
+
+            //limpar mensagem
+            setTimeout(() => this.msg = "", 3000);
+
         }
     },
     mounted(){
