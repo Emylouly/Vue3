@@ -1,9 +1,13 @@
 <template>
-  <v-main>
+
+  <div>
+    <Navbar />
+   <v-main>
     <router-view />
   </v-main>
+   <AppFooter/>
+  </div>
 
-  <AppFooter />
 </template>
 
 <script setup>

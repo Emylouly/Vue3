@@ -25,3 +25,10 @@
 <script>
 
 </script>
+
+<style scoped>
+.custom-col {
+  background-color: #121212 !important; /* tom escuro fixo como na 2ª imagem */
+  color: white; /* garante contraste do texto */
+}
+</style>
