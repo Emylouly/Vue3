@@ -22,7 +22,7 @@
       class="text-caption text-disabled"
       style="position: absolute; right: 16px;"
     >
-      &copy; 2016-{{ (new Date()).getFullYear() }} <span class="d-none d-sm-inline-block">Vuetify, LLC</span>
+      &copy; 2025 <span class="d-none d-sm-inline-block">Vuetify, LLC</span>
       —
       <a
         class="text-decoration-none on-surface"

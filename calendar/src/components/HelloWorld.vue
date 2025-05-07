@@ -17,8 +17,6 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-btn to="/home">Ir para home</v-btn>
-
   </v-container>
 </template>
 

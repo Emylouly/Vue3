@@ -13,9 +13,7 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-btn to="/">Ir para Início</v-btn>
-
-    </v-container>
+     </v-container>
   </template>
   
   <script setup>
