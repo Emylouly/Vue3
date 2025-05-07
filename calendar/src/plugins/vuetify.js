@@ -11,6 +11,7 @@ import { VCalendar } from 'vuetify/labs/VCalendar'
 
 // Composables
 import { createVuetify } from 'vuetify'
+import { pt } from 'vuetify/locale'
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
@@ -19,5 +20,9 @@ export default createVuetify({
   },
   components:{
     VCalendar,
+  },
+  locale:{
+    locale:'pt',
+    messages:{ pt },
   },
 })
