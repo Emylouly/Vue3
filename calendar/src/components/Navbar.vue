@@ -1,9 +1,9 @@
 <template>
   <div id="nav">
-    <v-btn @click="toggleTheme" class="mr-2">Alternar Tema</v-btn>
-    <v-btn to="/" class="mr-2">Início</v-btn>
-    <v-btn to="/home" class="mr-2">Home</v-btn>
-    <v-btn to="/calendario" class="mr-2">Calendário</v-btn>
+    <v-btn @click="toggleTheme" class="mr-7">Alternar Tema</v-btn>
+    <v-btn to="/" class="mr-7">Início</v-btn>
+    <v-btn to="/home" class="mr-7">Home</v-btn>
+    <v-btn to="/calendario" class="mr-7">Calendário</v-btn>
     </div>
   </template>
   
