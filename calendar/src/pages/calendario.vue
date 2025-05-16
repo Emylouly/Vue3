@@ -152,6 +152,7 @@ export default {
       if (!date) return;
 
       const parsedDate = new Date(date); // transforma string ISO em objeto Date
+      
 
       this.selectedDate = parsedDate;
       this.dialog = true;
@@ -163,8 +164,9 @@ export default {
         end: parsedDate,
       };
 
-      this.formattedStart = parsedDate.toLocaleDateString('pt-BR');
-      this.formattedEnd = parsedDate.toLocaleDateString('pt-BR');
+      this.formattedStart = parsedDate && !isNaN(parsedDate.getTime()) ? parsedDate.toLocaleDateString('pt-BR') : '';
+      this.formattedEnd = parsedDate && !isNaN(parsedDate.getTime()) ? parsedDate.toLocaleDateString('pt-BR') : '';
+
     },
     saveEvent() {
       if (
@@ -212,21 +214,43 @@ export default {
       this.dialog = false;
     },
     updateFormattedStart(date) {
-      this.formattedStart = new Date(date).toLocaleDateString('pt-BR');
+      if (!date || isNaN(new Date(date).getTime())) {
+        this.formattedStart = '';
+      } else {
+        this.formattedStart = new Date(date).toLocaleDateString('pt-BR');
+      }
     },
+
     updateFormattedEnd(date) {
-      this.formattedEnd = new Date(date).toLocaleDateString('pt-BR');
+      if (!date || isNaN(new Date(date).getTime())) {
+        this.formattedEnd = '';
+      } else {
+        this.formattedEnd = new Date(date).toLocaleDateString('pt-BR');
+      }
     },
+
   },
   created() {
-    // Exemplo de evento inicial
-    this.events.push({
-      title: 'Evento de Teste',
-      start: new Date(),
-      end: new Date(),
-      color: 'blue',
-      allDay: true,
+  // Buscar eventos do backend
+  fetch('http://localhost:3000/eventos')
+    .then(res => {
+      if (!res.ok) throw new Error('Erro ao buscar eventos');
+      return res.json();
+    })
+    .then(data => {
+      // Converter strings de data para objetos Date
+      this.events = data.map(evento => ({
+        ...evento,
+        start: new Date(evento.start),
+        end: new Date(evento.end),
+      }));
+    })
+    .catch(err => {
+      console.error(err);
+      this.msg = 'Erro ao carregar eventos!';
+      setTimeout(() => (this.msg = ''), 3000);
     });
-  },
+},
+
 };
 </script>
