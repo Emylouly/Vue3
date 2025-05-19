@@ -9,10 +9,10 @@
         :items="types"
         class="ma-2"
         density="compact"
-        label="Modo de Visualização"
+        label="View Mode"
         variant="outlined"
         hide-details
-      />
+      ></v-select>
       <v-select
         v-model="weekday"
         :items="weekdays"
@@ -190,7 +190,7 @@ export default {
 
       this.events.push(evento);
 
-      fetch('http://localhost:3000/eventos', {
+      fetch('http://localhost:8081/eventos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -232,7 +232,7 @@ export default {
   },
   created() {
   // Buscar eventos do backend
-  fetch('http://localhost:3000/eventos')
+  fetch('http://localhost:8081/eventos')
     .then(res => {
       if (!res.ok) throw new Error('Erro ao buscar eventos');
       return res.json();
