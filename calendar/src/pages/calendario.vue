@@ -150,6 +150,7 @@ export default {
     };
   },
   methods: {
+
     openDialog(date) {
       if (!date) return;
 
@@ -170,7 +171,11 @@ export default {
       this.formattedEnd = parsedDate && !isNaN(parsedDate.getTime()) ? parsedDate.toLocaleDateString('pt-BR') : '';
 
     },
-    saveEvent() {
+
+    async saveEvent(e) {
+      e?.preventDefault(); // previne envio automático, caso seja usado em formulário
+
+      // Validação
       if (
         !this.newEvent.title ||
         !this.newEvent.color ||
@@ -182,39 +187,67 @@ export default {
         return;
       }
 
-      const evento = {
-        title: this.newEvent.title,
-        color: this.newEvent.color,
-        start: this.newEvent.start,
-        end: this.newEvent.end,
-        allDay: true,
-      };
+      try {
+        // Buscar eventos existentes
+        const reqEventos = await fetch('http://localhost:8081/eventos');
+        const eventos = await reqEventos.json();
 
-      this.events.push(evento);
-
-      fetch('http://localhost:8081/eventos', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(evento),
-      })
-        .then((res) => {
-          if (!res.ok) throw new Error('Erro ao salvar');
-          return res.json();
-        })
-        .then(() => {
-          this.msg = 'Evento salvo com sucesso!';
-          setTimeout(() => (this.msg = ''), 1500);
-        })
-        .catch((err) => {
-          console.error(err);
-          this.msg = 'Erro ao salvar o evento!';
-          setTimeout(() => (this.msg = ''), 2000);
+        // Descobrir maior ID atual
+        let maxId = 0;
+        eventos.forEach((evento) => {
+          const eventoId = parseInt(evento.id);
+          if (eventoId > maxId) {
+            maxId = eventoId;
+          }
         });
 
-      this.dialog = false;
+        const newId = maxId + 1;
+
+        // Criar novo evento
+        const evento = {
+          id: newId,
+          title: this.newEvent.title,
+          color: this.newEvent.color,
+          start: this.newEvent.start,
+          end: this.newEvent.end,
+          allDay: true,
+        };
+
+        // Enviar evento ao backend
+        const req = await fetch('http://localhost:8081/eventos', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(evento),
+        });
+
+        const res = await req.json();
+
+        // Atualiza eventos localmente
+        this.events.push(evento);
+
+        // Mensagem de sucesso
+        this.msg = `Evento "${res.title}" salvo com sucesso!`;
+        setTimeout(() => (this.msg = ''), 1500);
+
+        // Fechar diálogo e limpar campos
+        this.dialog = false;
+        this.newEvent = {
+          title: '',
+          color: '',
+          start: null,
+          end: null,
+        };
+        this.formattedStart = '';
+        this.formattedEnd = '';
+      } catch (err) {
+        console.error(err);
+        this.msg = 'Erro ao salvar o evento!';
+        setTimeout(() => (this.msg = ''), 2000);
+      }
     },
+    
     updateFormattedStart(date) {
       if (!date || isNaN(new Date(date).getTime())) {
         this.formattedStart = '';

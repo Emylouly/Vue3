@@ -106,19 +106,7 @@
       "status": ""
     },
     {
-      "id": 2,
-      "nome": "sxdfsdf",
-      "pao": "Parmesão e Orégano",
-      "carne": "Alcatra",
-      "opcionais": [
-        "Bacon",
-        "Cheddar",
-        "Salame"
-      ],
-      "status": "Solicitado"
-    },
-    {
-      "id": 3,
+      "id": "3",
       "nome": "JANE DARK BEZERRA ARAUJO",
       "pao": "Parmesão e Orégano",
       "carne": "Ovo",
