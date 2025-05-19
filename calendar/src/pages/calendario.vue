@@ -132,6 +132,8 @@ export default {
         'green',
         'orange',
         'grey darken-1',
+        'red',
+        'yellow'
       ],
       dialog: false,
       selectedDate: null,
