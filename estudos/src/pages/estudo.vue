@@ -22,25 +22,45 @@
 
         <p>{{ livro.titulo }}</p>
         <p>{{ livro.paginas }}</p>
-    </div>
+
+        <p>{{ mensagem }}</p>
+
+        </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, onMounted, onBeforeMount, onUpdated } from 'vue';
+
 const name = ref("aaaa")
 const dataNascimento = ref("0")
-const contador = ref(0);
+const contador = ref(0)
 
 function incrementar() {
   contador.value++;
 }
 
 const livro = reactive({
-    titulo: 'As cronicas de narnia',
-    paginas: 125
+  titulo: 'As cronicas de narnia',
+  paginas: 125
 })
 
+const mensagem = ref("")
+
+onBeforeMount(() => {
+  console.log('🔵 Componente vai ser montado')
+})
+
+onMounted(() => {
+  console.log('🟢 Componente montado')
+  mensagem.value = 'Pronto!'
+})
+
+onUpdated(() => {
+  console.log('🔁 O componente foi atualizado. Valor atual do contador:', contador.value)
+  // Não mude mensagem.value aqui!
+})
 </script>
+
 
 <style>
 .form {
