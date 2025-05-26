@@ -38,11 +38,17 @@
         <p>{{ soma }}</p>
         <p>{{ dobro }}</p>
 
+        <br/>
+
+        <Mensagem :mensagem="texto" />
+
+
         </div>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted, onBeforeMount, onUpdated, computed } from 'vue';
+import Mensagem from './mensagem.vue';
 
 const nome = ref("Maria")
 const sobrenome = ref('Silva')
@@ -50,6 +56,7 @@ const dataNascimento = ref("0")
 const contador = ref(0)
 const numero1 = ref(0)
 const numero2 = ref(0)
+const texto = ref('Aqui diz pipabaripapabarapapa')
 
 function incrementar() {
   contador.value++;
