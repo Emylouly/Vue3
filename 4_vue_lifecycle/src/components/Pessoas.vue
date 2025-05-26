@@ -3,7 +3,7 @@
         <h2>Está é a descrição da pessoa {{ nome }}</h2>
         <Dados />
 
-        <Email :email="email" :trabalho="trabalho"/>
+        <Email :hora="email" :trabalho="trabalho"/>
 
     </div>
 </template>
