@@ -1,5 +1,9 @@
 <template>
     <div>
+
+      <a v-bind:href="link">Clique aqui</a>
+
+
         <form class="form">
             <label for="nome">Nome</label><br/>
             <input type="text" id="nome" name="nome" class="input" v-model="nome">
@@ -40,14 +44,18 @@
 
         <br/>
 
-        <Mensagem :mensagem="texto" />
+        <Mensagem :mensagem="texto" :nome="nome" :sobrenome="sobrenome" :livro="livro"/>
+
+        <button @click="mostrarmensagem = !mostrarmensagem">Alterar imagem</button><br>
+        <img v-if="mostrarmensagem" src="/img/emy.png" alt="Minha imagem">
+
 
 
         </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onBeforeMount, onUpdated, computed } from 'vue';
+import { ref, reactive, onMounted, onBeforeMount, onUpdated, computed, watch } from 'vue';
 import Mensagem from './mensagem.vue';
 
 const nome = ref("Maria")
@@ -57,6 +65,8 @@ const contador = ref(0)
 const numero1 = ref(0)
 const numero2 = ref(0)
 const texto = ref('Aqui diz pipabaripapabarapapa')
+const link = ref('http://localhost:8080/')
+const mostrarmensagem = ref(true)
 
 function incrementar() {
   contador.value++;
@@ -88,6 +98,10 @@ const nomeCompleto = computed(() => {
 
 const soma = computed(() => numero1.value + numero2.value)
 const dobro = computed(() => numero1.value * 2)
+
+watch(contador, (novovalor, valorantigo) => {
+  console.log(`Contador mudou de ${valorantigo} para ${novovalor}`)
+})
 
 </script>
 
