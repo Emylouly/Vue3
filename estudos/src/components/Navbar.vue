@@ -3,6 +3,7 @@
         <v-btn @click="toggleTheme" class="mr-7">Alternar theme</v-btn>
         <v-btn to="/" class="mr-7">Calendário</v-btn>
         <v-btn to="/estudo" class="mr-7">Estudo</v-btn>
+        <v-btn to="/campus" class="mr-7">Campus</v-btn>
     </div>
 </template>
 
