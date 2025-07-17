@@ -208,22 +208,6 @@
         console.error('Erro ao buscar turmas da disciplina:', error)
     }
     }
-
-    async function removerTurma(turma) {
-    const confirmacao = confirm(`Deseja realmente remover a turma ${turma.codigo} da disciplina ${disciplinaSelecionada.value.nome}?`)
-    if (!confirmacao) return
-
-    try {
-        await turmadisciplina_delete({
-        turma_id: turma.id,
-        disciplina_id: disciplinaSelecionada.value.id
-        })
-        turmasDaDisciplina.value = turmasDaDisciplina.value.filter(t => t.id !== turma.id)
-    } catch (error) {
-        console.error('Erro ao remover turma da disciplina:', error)
-    }
-    }
-
     function atualizarDisciplina() {
     disciplina_lista_all()
         .then(resp => {
