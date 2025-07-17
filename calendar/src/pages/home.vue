@@ -7,6 +7,9 @@
             <v-card-text>
               Página inicial
             </v-card-text>
+            <v-card-text>
+              Página inicial aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            </v-card-text>
             <v-card-actions>
               <v-btn color="primary" @click="mostrarMensagem">Clique aqui</v-btn>
             </v-card-actions>
