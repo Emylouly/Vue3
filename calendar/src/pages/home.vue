@@ -6,8 +6,6 @@
             <v-card-title class="text-h5">Página Inicial</v-card-title>
             <v-card-text>
               Página inicial
-            </v-card-text>
-            <v-card-text>
               Página inicial aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             </v-card-text>
             <v-card-actions>
