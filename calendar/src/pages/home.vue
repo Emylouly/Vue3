@@ -23,8 +23,7 @@
             <v-card-text>
               Página inicialcvxbcbvcb
               Página inicial aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-              {{ name }}
-              {{ name }}
+              {{ name1 }}
 
             </v-card-text>
             <v-card-actions>
