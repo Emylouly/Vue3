@@ -11,9 +11,9 @@
             <v-card-text>
               Página inicial
               Página inicial aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+              {{ name2 }}
             </v-card-text>
             <v-card-text>
-              Página inicialgsdfgsdfg
               Página inicial aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             </v-card-text>
             <v-card-text>sfhgsdfgs
@@ -23,9 +23,15 @@
             <v-card-text>
               Página inicialcvxbcbvcb
               Página inicial aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+              {{ name }}
+              {{ name }}
+
             </v-card-text>
             <v-card-actions>
-              <v-btn color="primary" @click="mostrarMensagem">Clique aqui</v-btn>
+              <v-btn color="primary" 
+              
+              
+              @click="mostrarMensagem">Clique aqui</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -37,5 +43,10 @@
   function mostrarMensagem() {
     alert('Você clicou no botão!')
   }
+
+  const name = ref("asfa");
+  const name1 = ref("bbbb");
+  const name2 = ref("ccc");
+
   </script>
   
