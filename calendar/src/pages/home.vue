@@ -5,7 +5,7 @@
           <v-card elevation="4">
             <v-card-title class="text-h5">Página Inicial</v-card-title>
             <v-card-text>
-              Esta é a página inicial criada com roteamento automático.
+              Página inicial
             </v-card-text>
             <v-card-actions>
               <v-btn color="primary" @click="mostrarMensagem">Clique aqui</v-btn>
