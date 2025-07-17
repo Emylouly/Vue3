@@ -202,44 +202,7 @@
     try {
         const todas = await turmadisciplina_lista_all()
         turmasDaDisciplina.value = todas.filter(t =>
-        t.disciplina?.id === item.id
-        )
-    } catch (error) {
-        console.error('Erro ao buscar turmas da disciplina:', error)
-    }
-    }
-
-    async function removerTurma(turma) {
-    const confirmacao = confirm(`Deseja realmente remover a turma ${turma.codigo} da disciplina ${disciplinaSelecionada.value.nome}?`)
-    if (!confirmacao) return
-
-    try {
-        await turmadisciplina_delete({
-        turma_id: turma.id,
-        disciplina_id: disciplinaSelecionada.value.id
-        })
-        turmasDaDisciplina.value = turmasDaDisciplina.value.filter(t => t.id !== turma.id)
-    } catch (error) {
-        console.error('Erro ao remover turma da disciplina:', error)
-    }
-    }
-
-    function atualizarDisciplina() {
-    disciplina_lista_all()
-        .then(resp => {
-        itens.value = resp
-
-            const cargaHorariasUnicas = [...new Set(resp.map(disciplina => disciplina.cargaHoraria))];
-        
-            cargaHoraria.value = cargaHorariasUnicas.sort((a, b) => a - b).map(c => ({
-                id: c,
-                label: `${c} horas`
-            }));
-        })
-        .catch(err => {
-        console.error('Erro ao atualizar disciplina:', err)
-        });
-    }
+        t.disciplina?.id 
 
     function atualizarprofessor() {
     professor_lista_all()
