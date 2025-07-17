@@ -202,28 +202,7 @@
     try {
         const todas = await turmadisciplina_lista_all()
         turmasDaDisciplina.value = todas.filter(t =>
-        t.disciplina?.id === item.id
-        )
-    } catch (error) {
-        console.error('Erro ao buscar turmas da disciplina:', error)
-    }
-    }
-    function atualizarDisciplina() {
-    disciplina_lista_all()
-        .then(resp => {
-        itens.value = resp
-
-            const cargaHorariasUnicas = [...new Set(resp.map(disciplina => disciplina.cargaHoraria))];
-        
-            cargaHoraria.value = cargaHorariasUnicas.sort((a, b) => a - b).map(c => ({
-                id: c,
-                label: `${c} horas`
-            }));
-        })
-        .catch(err => {
-        console.error('Erro ao atualizar disciplina:', err)
-        });
-    }
+        t.disciplina?.id 
 
     function atualizarprofessor() {
     professor_lista_all()
